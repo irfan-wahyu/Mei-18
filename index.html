@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ulang Tahun Mei Ke-18</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Tema Warna Pink */
+        --sky-lt: #fce4ec;
+        --sky-md: #f8bbd0;
+        --sky-dk: #f06292;
+        --sky-deep: #880e4f;
+        --accent: #ec407a;
+        --glass: rgba(255, 255, 255, 0.52);
+        --border: rgba(255, 255, 255, 0.82);
+        --shadow: rgba(120, 20, 60, 0.13);
+        --text: #4a0416;
+        --muted: #ad1457;
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        font-family: "Jost", sans-serif;
+        font-weight: 300;
+        color: var(--text);
+        background: #f8bbd0;
+      }
+
+      /* BG */
+      #bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background:
+          radial-gradient(
+            ellipse 90% 70% at 15% 5%,
+            #fce4ec 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 70% 80% at 85% 95%,
+            #f48fb1 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 55% 55% at 55% 45%,
+            #f8bbd0 0%,
+            transparent 50%
+          ),
+          linear-gradient(175deg, #fbc2eb 0%, #f8bbd0 50%, #f06292 100%);
+      }
+
+      /* BLOBS */
+      .blob {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(72px);
+        opacity: 0.35;
+        z-index: 1;
+        animation: blobDrift ease-in-out infinite alternate;
+      }
+      @keyframes blobDrift {
+        from {
+          transform: translate(0, 0) scale(1);
+        }
+        to {
+          transform: translate(30px, -25px) scale(1.08);
+        }
+      }
+      .ba {
+        width: 420px;
+        height: 420px;
+        background: #f48fb1;
+        top: -130px;
+        left: -110px;
+        animation-duration: 13s;
+      }
+      .bb {
+        width: 300px;
+        height: 300px;
+        background: #ec407a;
+        bottom: -90px;
+        right: -70px;
+        animation-duration: 17s;
+      }
+      .bc {
+        width: 200px;
+        height: 200px;
+        background: #fce4ec;
+        top: 38%;
+        right: 8%;
+        animation-duration: 11s;
+      }
+
+      /* STARS */
+      .star {
+        position: fixed;
+        background: white;
+        border-radius: 50%;
+        z-index: 2;
+        pointer-events: none;
+        animation: twinkle ease-in-out infinite;
+      }
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.85;
+          transform: scale(1.6);
+        }
+      }
+
+      /* STAGE */
+      #stage {
+        position: relative;
+        z-index: 10;
+        width: 100vw;
+        height: 100vh;
+      }
+      .page {
+        display: none;
+        position: absolute;
+        inset: 0;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      .page.on {
+        display: flex;
+      }
+
+      /* CARD */
+      .card {
+        background: var(--glass);
+        backdrop-filter: blur(28px) saturate(180%);
+        -webkit-backdrop-filter: blur(28px) saturate(180%);
+        border: 1.5px solid var(--border);
+        border-radius: 30px;
+        padding: 44px 48px;
+        max-width: 480px;
+        width: 100%;
+        text-align: center;
+        box-shadow:
+          0 2px 0 rgba(255, 255, 255, 0.9) inset,
+          0 24px 60px var(--shadow),
+          0 4px 12px rgba(110, 10, 60, 0.07);
+        animation: cardUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+        position: relative;
+        overflow: hidden;
+      }
+      .card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 14px;
+        right: 14px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.9) 40%,
+          rgba(255, 255, 255, 0.9) 60%,
+          transparent
+        );
+      }
+      @keyframes cardUp {
+        from {
+          opacity: 0;
+          transform: translateY(36px) scale(0.97);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* TYPE */
+      .display {
+        font-family: "Gilda Display", serif;
+        font-size: 30px;
+        color: var(--sky-deep);
+        line-height: 1.25;
+        margin-bottom: 6px;
+        letter-spacing: 0.3px;
+      }
+      .sub {
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 1.1px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      /* BTN */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 32px;
+        background: linear-gradient(135deg, var(--sky-dk), var(--sky-deep));
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-family: "Jost", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        margin-top: 24px;
+        transition:
+          transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.25s;
+        box-shadow:
+          0 6px 24px rgba(110, 10, 60, 0.28),
+          0 1px 0 rgba(255, 255, 255, 0.2) inset;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.18),
+          transparent 60%
+        );
+        border-radius: inherit;
+      }
+      .btn:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 10px 32px rgba(110, 10, 60, 0.36);
+      }
+      .btn:active {
+        transform: scale(0.97);
+      }
+
+      /* LOADING */
+      #loadText {
+        font-family: "Gilda Display", serif;
+        font-size: 20px;
+        font-style: italic;
+        color: var(--sky-deep);
+        min-height: 30px;
+        letter-spacing: 0.2px;
+      }
+      .caret {
+        display: inline-block;
+        width: 2px;
+        height: 20px;
+        background: var(--accent);
+        vertical-align: middle;
+        margin-left: 2px;
+        animation: cBlink 1s infinite;
+      }
+      @keyframes cBlink {
+        0%,
+        49% {
+          opacity: 1;
+        }
+        50%,
+        100% {
+          opacity: 0;
+        }
+      }
+      .loadbar {
+        width: 220px;
+        height: 3px;
+        background: rgba(236, 64, 122, 0.15);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 18px auto 0;
+      }
+      .loadfill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--sky-md), var(--accent));
+        border-radius: 4px;
+        transition: width 0.05s linear;
+      }
+
+      /* PIN */
+      .pin-ring {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin: 20px 0 22px;
+      }
+      .ring {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        border: 2px solid var(--sky-md);
+        background: transparent;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .ring.on {
+        background: var(--accent);
+        border-color: var(--accent);
+        transform: scale(1.25);
+        box-shadow: 0 0 12px rgba(236, 64, 122, 0.55);
+      }
+      .ring.err {
+        background: #f87171;
+        border-color: #f87171;
+      }
+      .pad {
+        display: grid;
+        grid-template-columns: repeat(3, 62px);
+        gap: 11px;
+        justify-content: center;
+      }
+      .key {
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Gilda Display", serif;
+        font-size: 20px;
+        color: var(--sky-deep);
+        background: rgba(255, 255, 255, 0.78);
+        border: 1.5px solid rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(120, 20, 60, 0.1);
+        transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        user-select: none;
+      }
+      .key:hover {
+        transform: scale(1.13);
+        background: white;
+        box-shadow: 0 6px 22px rgba(120, 20, 60, 0.18);
+      }
+      .key:active {
+        transform: scale(0.9);
+      }
+      #pinMsg {
+        font-size: 13px;
+        color: #f87171;
+        letter-spacing: 0.4px;
+        min-height: 18px;
+        margin-top: 14px;
+      }
+      .shake {
+        animation: shake 0.4s ease;
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        20% {
+          transform: translateX(-9px);
+        }
+        40% {
+          transform: translateX(9px);
+        }
+        60% {
+          transform: translateX(-5px);
+        }
+        80% {
+          transform: translateX(5px);
+        }
+      }
+
+      /* GAME */
+      #gamePage .card {
+        max-width: 560px;
+      }
+      .score-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(236, 64, 122, 0.1);
+        border: 1px solid rgba(236, 64, 122, 0.2);
+        border-radius: 50px;
+        padding: 5px 18px;
+        font-size: 14px;
+        color: var(--sky-dk);
+        font-weight: 500;
+        letter-spacing: 0.4px;
+        margin-bottom: 14px;
+      }
+      #arena {
+        width: 100%;
+        height: 50vh;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        overflow: hidden;
+        position: relative;
+      }
+      .h {
+        position: absolute;
+        font-size: 27px;
+        cursor: pointer;
+        user-select: none;
+        filter: drop-shadow(0 3px 6px rgba(236, 64, 122, 0.3));
+        animation: fall linear forwards;
+      }
+      @keyframes fall {
+        0% {
+          top: -8%;
+          opacity: 0;
+        }
+        6% {
+          opacity: 1;
+        }
+        92% {
+          opacity: 1;
+        }
+        100% {
+          top: 108%;
+          opacity: 0;
+        }
+      }
+
+      /* WIN */
+      #winOverlay {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        background: rgba(60, 10, 30, 0.4);
+        backdrop-filter: blur(10px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+      .win-card {
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 32px;
+        padding: 50px 46px;
+        text-align: center;
+        max-width: 340px;
+        width: 88%;
+        box-shadow: 0 28px 80px rgba(120, 20, 60, 0.2);
+        animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.35) both;
+        position: relative;
+        overflow: hidden;
+      }
+      .win-card p[style] {
+        color: #853d58 !important;
+      }
+      .win-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--sky-md),
+          var(--accent),
+          var(--sky-md)
+        );
+      }
+      @keyframes popIn {
+        from {
+          opacity: 0;
+          transform: scale(0.5) rotate(-4deg);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .win-emoji {
+        font-size: 52px;
+        margin-bottom: 12px;
+        display: block;
+        animation: bounce 0.8s ease infinite alternate;
+      }
+      @keyframes bounce {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-8px);
+        }
+      }
+
+        /* LETTER */
+        #letter {
+          text-align: left;
+          font-family: "Gilda Display", serif;
+          font-size: 17px;
+          line-height: 2;
+          color: var(--sky-deep);
+     
+          padding: 22px 26px;
+          background: rgba(255, 255, 255, 0.3);
+          border-left: 3px solid rgba(255, 255, 255, 0.7);
+          border-radius: 0 18px 18px 0;
+          margin-top: 4px;
+          max-height: 50vh;
+          overflow-y: auto;
+        }
+
+        #letter::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        #letter::-webkit-scrollbar-thumb {
+          background: var(--sky-md);
+          border-radius: 4px;
+        }
+
+      #subtitle {
+        position: fixed;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        padding: 10px 18px;
+        border-radius: 14px;
+
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(8px);
+
+        color: white;
+        font-size: 16px;
+
+        max-width: 80%;
+        text-align: center;
+
+        z-index: 9999;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transition: opacity 0.3s ease;
+      }
+
+        /* QUOTE */
+        .quote{
+          display: block;
+
+          position: relative;
+
+          font-style: italic;
+
+          opacity: 0.92;
+
+          line-height: 2;
+
+          padding-left: 18px;
+
+          margin-bottom: 18px;
+
+        
+        }
+
+        .normal-text{
+        margin-top: 22px;
+
+        font-style: normal;
+      }
+
+        .quote::before{
+          content: "“";
+
+          position: absolute;
+
+          left: -4px;
+          top: -20px;
+
+          font-size: 58px;
+
+          opacity: 0.2;
+
+          color: var(--sky-md);
+        }
+
+      /* MEMORY */
+      .photo-wrap {
+        position: relative;
+        display: inline-block;
+        margin-top: 4px;
+      }
+      .photo-wrap::before {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: 30px;
+        border: 2px solid rgba(245, 125, 185, 0.4);
+      }
+      .photo-wrap::after {
+        content: "";
+        position: absolute;
+        inset: -16px;
+        border-radius: 36px;
+        border: 1px solid rgba(245, 125, 185, 0.2);
+      }
+      .slide {
+        display: none;
+      }
+      .slide.show {
+        display: block;
+      }
+      .slide img {
+        width: 210px;
+        height: 290px;
+        object-fit: cover;
+        border-radius: 22px;
+        box-shadow:
+          0 16px 40px rgba(236, 64, 122, 0.25),
+          0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 3px solid white;
+        animation: imgIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      @keyframes imgIn {
+        from {
+          opacity: 0;
+          transform: scale(0.93) translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .sdots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .sd {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--sky-md);
+        opacity: 0.38;
+        transition: all 0.3s;
+      }
+      .sd.a {
+        opacity: 1;
+        background: var(--accent);
+        transform: scale(1.5);
+      }
+
+      /* MUSIC */
+      #musicPage .card {
+        max-width: 420px;
+      }
+      .tracks {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+        margin-top: 6px;
+      }
+      .track {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-radius: 18px;
+        padding: 10px 12px;
+        box-shadow: 0 4px 16px rgba(120, 20, 60, 0.1);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .track:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 28px rgba(120, 20, 60, 0.15);
+      }
+        .track iframe {
+          border-radius: 18px;
+          box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+      @media (max-width: 520px) {
+        .card {
+          padding: 30px 20px;
+        }
+        .display {
+          font-size: 24px;
+        }
+        .slide img {
+          width: 175px;
+          height: 240px;
+        }
+        .pad {
+          grid-template-columns: repeat(3, 56px);
+        }
+        .key {
+          width: 56px;
+          height: 56px;
+          font-size: 18px;
+        }
+        #arena {
+          height: 44vh;
+        }
+        #letter {
+          font-size: 15px;
+          padding: 16px 18px;
+          max-height: 42vh;
+        }
+      }
+
+      
+    </style>
+  </head>
+  <body>
+<audio id="bgm" loop>
+  <source src="https://raw.githubusercontent.com/irfan-wahyu/Mei-18/main/music/about-you.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="document.getElementById('bgm').play()">▶ Play</button>
+<button onclick="document.getElementById('bgm').pause()">⏸ Pause</button>
+
+<div id="subtitle"></div>
+
+    <div id="bg"></div>
+    <div class="blob ba"></div>
+    <div class="blob bb"></div>
+    <div class="blob bc"></div>
+    <div id="sparks"></div>
+
+    <div id="stage">
+      <div class="page on" id="loadPage">
+        <div class="card">
+          <p id="loadText"><span class="caret"></span></p>
+          <div class="loadbar"><div class="loadfill" id="lf"></div></div>
+        </div>
+      </div>
+
+      <div class="page" id="pinPage">
+        <div class="card">
+          <p class="sub">Masukkan Password</p>
+          <p class="display">Masukkin Password Dulu Ya Meiii ⸜(｡˃ ᵕ ˂ )⸝♡</p>
+          <div class="pin-ring" id="rings">
+            <div class="ring" id="r0"></div>
+            <div class="ring" id="r1"></div>
+            <div class="ring" id="r2"></div>
+            <div class="ring" id="r3"></div>
+            <div class="ring" id="r4"></div>
+            <div class="ring" id="r5"></div>
+          </div>
+          <div class="pad">
+            <div class="key">1</div>
+            <div class="key">2</div>
+            <div class="key">3</div>
+            <div class="key">4</div>
+            <div class="key">5</div>
+            <div class="key">6</div>
+            <div class="key">7</div>
+            <div class="key">8</div>
+            <div class="key">9</div>
+            <div></div>
+            <div class="key">0</div>
+            <div></div>
+          </div>
+          <p id="pinMsg"></p>
+        </div>
+      </div>
+
+      <div class="page" id="gamePage">
+        <div class="card">
+          <p class="sub">Main Game Bentar Yuk Hehehe</p>
+          <p class="display" style="margin-bottom: 12px">
+            Cepat! Tangkap hatinya!
+          </p>
+          <div class="score-pill">Score <span id="score">0</span> / 5 💗</div>
+          <div id="arena"></div>
+        </div>
+      </div>
+
+      <div class="page" id="bdPage">
+        <div class="card">
+          <p class="sub">💌 Surat Buat Mei 💌<br>My Future Wife ๑>◡<๑ </p>
+          <p class="display">Makasih Udah <br> Mewarnai Hidup Aku <br> See you di pelaminan 🤚🏼 </p>
+          <div class="quote-box" id="quote"></div>
+          <div id="letter"></div>
+          <button class="btn" onclick="go('memPage')">Next →</button>
+        </div>
+      </div>
+
+      <div class="page" id="memPage">
+        <div class="card">
+          <p class="sub">📷 Foto Irfan & Mei 📷</p>
+          <p class="display" style="margin-bottom: 14px">Our Memories</p>
+           <div class="photo-wrap">
+            <div class="slide show">
+              <img src="FOTO_1.jpg" />
+            </div>
+
+            <div class="slide">
+              <img src="FOTO_2.jpg" />
+            </div>
+
+            <div class="slide">
+              <img src="FOTO_3.jpg" />
+            </div>
+
+            <div class="slide">
+              <img src="FOTO_4.jpg" />
+            </div>
+
+            <div class="slide">
+              <img src="FOTO_5.jpg" />
+            </div>
+
+            <div class="slide">
+              <img src="FOTO_6.jpg" />
+            </div>
+
+            <div class="slide">
+              <img src="FOTO_7.jpg" />
+            </div>
+
+            <div class="slide">
+              <img src="FOTO_8.jpg" />
+            </div>
+        </div>
+
+        <div class="sdots">
+          <div class="sd a"></div>
+          <div class="sd"></div>
+          <div class="sd"></div>
+          <div class="sd"></div>
+          <div class="sd"></div>
+          <div class="sd"></div>
+          <div class="sd"></div>
+          <div class="sd"></div>
+        </div>
+          <button class="btn" onclick="go('musicPage')">Music For You →</button>
+        </div>
+      </div>
+
+      <div class="page" id="musicPage">
+        <div class="card">
+          <p class="sub">🎶 Dengerin ya Biar Semangat 🎶<br> ini udah slide terakhir ko,boleh kamu close </p>
+          <p class="display" style="margin-bottom: 14px">Musik Buat Kita</p>
+          <div class="tracks">
+          <div class="track">
+          <iframe
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1EJwBYOQw9sUr7?si=rai4jaXgTQe4i1Xo0xzQIg"
+            width="100%"
+            height="420"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          ></iframe>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="winOverlay">
+      <div class="win-card">
+        <span class="win-emoji">🎉</span>
+        <p class="display" style="font-size: 26px; margin-bottom: 8px">
+          Kamu Menang! ❤️
+        </p>
+        <p style="font-size: 14px; color: #853d58; line-height: 1.7">
+          Kamu berhasil menangkap hatiku lagi 🥺<br />Dan seperti biasa… kamu
+          selalu berhasil,hehehe alay ya.
+        </p>
+        <button class="btn" onclick="openBd()">Buka hadiah mu 🎁</button>
+      </div>
+    </div>
+
+    <script>
+
+        const bgm = document.getElementById("bgm");
+        const sub = document.getElementById("subtitle");
+
+        function playMusic() {
+          bgm.play();
+        }
+
+        const subtitles = [
+          { t: 45, text: "Aku tahu sebuah tempat" },
+          { t: 55, text: "Suatu tempat yang aku kunjungi ketika aku perlu mengingat wajahmu" },
+          { t: 63, text: "Kita menikah di pikiran kita (besok beneran aku nikahin)" },
+          { t: 75, text: "Sesuatu untuk dilakukan sementara kita mencoba mengingat bagaimana kita bertemu" },
+
+          { t: 84, text: "Apakah kamu pikir aku sudah lupa?" },
+          { t: 89, text: "Apakah kamu pikir aku sudah lupa?" },
+          { t: 93, text: "Apakah kamu pikir aku telah melupakanmu?" },
+
+          { t: 105, text: "Kau dan aku masih hidup" },
+          { t: 115, text: "Tanpa melakukan apa-apa, aku bisa berbaring dan hanya menatap matamu" },
+          { t: 120, text: "Tunggu dan berpura-pura" },
+          { t: 135, text: "Bertahanlah dan berharap bahwa kita akan menemukan jalan kembali pada akhirnya" },
+
+          { t: 145, text: "Apakah kamu pikir aku sudah lupa?" },
+          { t: 149, text: "Apakah kamu pikir aku sudah lupa Mei?" },
+          { t: 155, text: "Apakah kamu pikir aku telah melupakanmu Mei Sayang?" },
+
+          { t: 185, text: "Ada sesuatu tentangmu yang saat ini tak bisa ku ingat" },
+          { t: 188, text: "Itu hal sama yang membuat hatiku menyerah" },
+          { t: 194, text: "Dan aku merindukanmu di kereta, aku merindukanmu di pagi hari" },
+          { t: 200, text: "Aku tidak pernah tahu apa yang harus dipikirkan" },
+          { t: 203, text: "Aku memikirkan tentangmu Mei sayang" },
+          { t: 208, text: "Tentangmu Sayang" },
+
+          { t: 215, text: "Apakah kau pikir aku telah melupakanmu?" },
+          { t: 219, text: "Tentangmu Sayang" },
+          { t: 224, text: "Tentangmu Mei Sayang" },
+          { t: 229, text: "Apakah kau pikir aku telah melupakanmu?" },
+          { t: 240, text: "makasih ya udah dengerin ampe sini, effort 5 jam lo ini wkwkkwkwkw" }
+        ];
+
+        bgm.ontimeupdate = () => {
+          const time = bgm.currentTime;
+          let current = "";
+
+          for (let i = 0; i < subtitles.length; i++) {
+            if (time >= subtitles[i].t) {
+              current = subtitles[i].text;
+            }
+          }
+
+          if (current !== "") {
+            sub.innerText = current;
+            sub.style.opacity = "1";
+            sub.style.visibility = "visible";
+          } else {
+            sub.innerText = "";
+            sub.style.opacity = "0";
+            sub.style.visibility = "hidden";
+          }
+        };
+
+      /* STARS */
+      (() => {
+        for (let i = 0; i < 70; i++) {
+          const s = document.createElement("div");
+          s.className = "star";
+          const z = Math.random() * 3 + 1;
+          s.style.cssText = `width:${z}px;height:${z}px;top:${Math.random() * 100}%;left:${Math.random() * 100}%;animation-duration:${2 + Math.random() * 4}s;animation-delay:-${Math.random() * 5}s;`;
+          document.getElementById("sparks").appendChild(s);
+        }
+      })();
+
+      /* PAGE */
+      function go(id) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("on"));
+        document.getElementById(id).classList.add("on");
+        if (id === "memPage") {
+          clearTimeout(sT);
+          si = 0;
+          showSlide();
+        }
+      }
+
+      /* LOADING */
+      const str = "Sabar Ya Mei, Lagi Loading Hehehehe";
+      let li = 0;
+      const ltEl = document.getElementById("loadText");
+      const lfEl = document.getElementById("lf");
+      (function t() {
+        if (li < str.length) {
+          ltEl.innerHTML = str.slice(0, ++li) + '<span class="caret"></span>';
+          lfEl.style.width = (li / str.length) * 100 + "%";
+          setTimeout(t, 100);
+        } else {
+          setTimeout(() => go("pinPage"), 900);
+        }
+      })();
+
+      /* PIN */
+      let pin = "";
+      document.querySelectorAll(".key").forEach((k) => {
+        k.addEventListener("click", () => {
+          if (pin.length >= 6) return;
+          pin += k.innerText;
+          for (let i = 0; i < 6; i++)
+            document
+              .getElementById("r" + i)
+              .classList.toggle("on", i < pin.length);
+          if (pin.length === 6) {
+            if (pin === "290508") {
+              setTimeout(startGame, 350);
+            } else {
+              for (let i = 0; i < 6; i++)
+                document.getElementById("r" + i).classList.add("err");
+              const m = document.getElementById("pinMsg");
+              m.innerText = "PIN salah 🥺  coba tebak pakek tanggal lahir kamu";
+              document.getElementById("rings").classList.add("shake");
+              setTimeout(() => {
+                pin = "";
+                for (let i = 0; i < 6; i++) {
+                  const r = document.getElementById("r" + i);
+                  r.classList.remove("on", "err");
+                }
+                m.innerText = "";
+                document.getElementById("rings").classList.remove("shake");
+              }, 900);
+            }
+          }
+        });
+      });
+
+      /* GAME - Menggunakan Emoji Hati Pink */
+      let score = 0,
+        gIv;
+      const EM = ["💗", "💖", "🌸", "❤️"];
+      function startGame() {
+        go("gamePage");
+        score = 0;
+        document.getElementById("score").innerText = 0;
+        clearInterval(gIv);
+        gIv = setInterval(spawnH, 620);
+      }
+      function spawnH() {
+        if (!document.getElementById("gamePage").classList.contains("on")) {
+          clearInterval(gIv);
+          return;
+        }
+        const arena = document.getElementById("arena");
+        const h = document.createElement("div");
+        h.className = "h";
+        h.innerText = EM[Math.floor(Math.random() * EM.length)];
+        h.style.left = 6 + Math.random() * 86 + "%";
+        const dur = 2.1 + Math.random() * 1.5;
+        h.style.animationDuration = dur + "s";
+        h.onclick = () => {
+          h.style.transition = "transform .15s,opacity .15s";
+          h.style.transform = "scale(1.7)";
+          h.style.opacity = "0";
+          score++;
+          document.getElementById("score").innerText = score;
+          if (score >= 5) {
+            clearInterval(gIv);
+            setTimeout(() => {
+              document.getElementById("winOverlay").style.display = "flex";
+            }, 350);
+          }
+          setTimeout(() => h.remove(), 200);
+        };
+        arena.appendChild(h);
+        setTimeout(() => h.remove(), dur * 1000 + 300);
+      }
+      function openBd() {
+        document.getElementById("winOverlay").style.display = "none";
+        go("bdPage");
+
+        playMusic();
+        typeLetter();
+      }
+
+        /* LETTER */
+
+        const ltxt = `"kata mereka, sebelum manusia mati,
+        otaknya akan memutar tujuh menit kenangan paling berharga dalam hidupnya.
+
+        aku tidak tahu itu benar atau tidak.
+
+        tapi kalau suatu hari nanti perang dunia pecah,
+        lalu aku gugur jauh dari rumah sebagai seorang tentara,
+
+        mungkin di detik terakhir itu,
+        lagu ini akan terdengar pelan.
+
+        dan di antara suara sirine,
+        langit yang terbakar,
+        serta dunia yang runtuh perlahan,
+
+        otakku akan kembali menuju kamu.
+
+        kepada seorang gadis jawa,
+        dengan senyum manis
+        yang pernah membuat dunia
+        terasa lebih layak untuk ditinggali.
+
+        dan sebelum semuanya gelap,
+
+        mungkin hal paling indah dalam hidupku
+        adalah pernah dipertemukan denganmu"
+        
+
+        ━━━━━━━━━━━━━━
+
+
+        selamat ulang tahun ya,  
+        udah 18 tahun sekarang, hehe  
+
+        aku berharap di umur barumu ini  
+        kamu tumbuh jadi pribadi yang lebih tegar  
+        yang tetap berdiri meski hidup kadang tidak berjalan sesuai rencana  
+
+        semoga nantinya di sekelilingmu  
+        selalu ada orang-orang yang baik  
+        yang bisa mengerti dirimu tanpa banyak kata  
+        yang hadir tanpa membuatmu merasa sendiri  
+
+        semoga kamu dipertemukan dengan lingkungan yang sehat  
+        yang selalu memberimu semangat untuk menjalani hari-harimu
+
+        dan di sela-sela hari yang panjang itu  
+        semoga kamu tetap punya ruang untuk bernapas  
+        untuk berhenti sebentar tanpa merasa tertinggal  
+
+        kalau nanti ada hari-hari ketika kamu jatuh  
+        atau merasa semuanya terlalu berat  
+        tolong jangan hilang arah  
+        ingat bahwa kamu sudah sejauh ini  
+        dan kamu masih punya cukup alasan untuk terus melangkah    
+
+        lebih dari itu,  
+        aku juga menyimpan satu harapan kecil untuk masa depan  
+        bahwa hidup akan mempertemukan kita kembali di waktu yang tepat  
+
+        bukan sebagai beban masa lalu,  
+        tapi sebagai dua orang yang sudah tumbuh  
+        dan menjadi lebih siap dari sebelumnya  
+
+        mungkin di titik yang lebih dewasa  
+        di saat yang lebih tenang  
+        di kehidupan yang sudah lebih memahami arti perjalanan  
+
+        semoga hidupmu perlahan dipenuhi hal-hal yang baik  
+        yangselalu datang satu per satu 
+
+        selamat ulang tahun.iya iya kebanyakan dari chatgpt kooo, cuma ide pokonya aku mikir sendiri loo,ada beberapa yang aku pakai chatgpt karena udah mentok nyusun kalimatnya`;
+
+  let lj = 0;
+
+  function typeLetter() {
+
+    lj = 0;
+
+    const el = document.getElementById("letter");
+
+    el.innerHTML = "";
+
+    (function t() {
+
+      if (lj < ltxt.length) {
+
+        el.innerHTML += ltxt[lj++];
+
+        el.scrollTop = el.scrollHeight;
+
+        const full = el.innerHTML;
+
+        const splitText = "━━━━━━━━━━━━━━";
+
+        if (full.includes(splitText)) {
+
+          const parts = full.split(splitText);
+
+          el.innerHTML = `
+            <div class="quote">${parts[0]}</div>
+            <div class="normal-text">${parts[1]}</div>
+          `;
+        }
+
+        const speed = lj < 786 ? 3 : 15;
+
+        setTimeout(t, speed);
+
+      }
+
+    })();
+  }
+
+      /* SLIDES */
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".sd");
+
+      let si = 0;
+      let sT;
+
+      function showSlide() {
+        slides.forEach((s, i) => {
+          s.classList.toggle("show", i === si);
+          if (dots[i]) dots[i].classList.toggle("a", i === si);
+        });
+
+        si = (si + 1) % slides.length;
+        sT = setTimeout(showSlide, 2700);
+      }
+    </script>
+  </body>
+</html>
